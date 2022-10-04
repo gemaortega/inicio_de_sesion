@@ -22,57 +22,6 @@
   </style>
 </head>
 <body>
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-6 mb-4">
-              <div class="card">
-                  <img class="card-img-top" src="" alt="">
-                  <div class="card-body">
-                    <div class="card-body"style="width: 40rem; background-color: lightgrey">
-                      <h3 class="text-success">Login</h3><br>
-                        <form action="/process" method="POST">
-                            <div class="form-group">
-                              <div class="mb-3">
-                                <label for="disabledTextInput" class="form_label">First Name</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="first_name" placeholder="First Name">
-                                <label for="disabledTextInput" class="form_label">Last Name</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="last_name" placeholder="Last Name">
-                                <label for="disabledTextInput" class="form_label">Email</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="email" placeholder="Email">
-                                <label for="disabledTextInput" class="form_label">Password</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="password" placeholder="Password">
-                                <label for="disabledTextInput" class="form_label">Confirm Password</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="confirm_password" placeholder="Confirm Password">
-                              </div> 
-                            </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
-          </div>
-          <div class="col-lg-6 mb-4">
-              <div class="card">
-                  <img class="card-img-top" src="" alt="">
-                  <div class="card-body">
-                    <div class="card-body"style="width: 40rem; background-color: lightgrey">
-                      <h3 class="text-success">Login</h3><br>
-                        <form action="/process" method="POST">
-                            <div class="form-group">
-                              <div class="mb-3">
-                                <label for="disabledTextInput" class="form_label">Email</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="email" placeholder="Email">
-                                <label for="disabledTextInput" class="form_label">Password</label>
-                                <input type="text" class="form-control" id="disabledTextInput" name="password" placeholder="Password">
-                              </div> 
-                            </div>
-                            <button type="submit" class="btn btn-success">Login</button>
-                        </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-
-<body >
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -82,7 +31,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Register</a>
+        <a class="navbar-brand" href="#">Form</a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -96,12 +45,69 @@
   </nav>
 
   <div class="container-fluid bg-3">
-    <div class="card">
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-body" style="width: 40rem; background-color: lightgrey">
+              <h3 class="text-success">Register</h3><br>
+              <form action="/process" method="POST">
+                <div class="mb-3">
+                  <div class="form-group">
+                    <label for="first_name" class="form_label">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="last_name" class="form_label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="form_label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="form_label">Password</label>
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="confirm_password" class="form_label">Confirm Password</label>
+                    <input type="text" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                  </div> 
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-body" style="width: 40rem; background-color: lightgrey">
+              <h3 class="text-success">Login</h3><br>
+              <form action="/process" method="POST">
+                <div class="mb-3">
+                  <div class="form-group">
+                    <label for="email_login" class="form_label">Email</label>
+                    <input type="text" class="form-control" id="email_login" name="email_login" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="password_login" class="form_label">Password</label>
+                    <input type="text" class="form-control" id="password_login" name="password_login" placeholder="Password">
+                  </div> 
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       
   </div><br>
 
   <footer class="container-fluid text-center">
-    <p>Register</p>
+    <p>Form</p>
   </footer>
 
 </body>
