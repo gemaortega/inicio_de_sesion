@@ -20,10 +20,8 @@ def register():
 # RUTAS DE CREACION (CREATE)
 @app.route('/create_user', methods=['POST'])
 def create_user():
-    """
     if not User.validate_user(request.form):
         return redirect('/')
-    """
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     print(f"pw_hash: {pw_hash}")
     data = {
@@ -35,13 +33,7 @@ def create_user():
     print(data, "EFECTIVAMENTE ATRAPAMOS LA INFO DEL FORMULARIO")
     id_user = User.save(data)
     print(id_user, "QUE RETORNO EL HABER REGISTRADO UN USUARIO NUEVO?")
-    #session['id_usuario'] = id_user 
     return render_template('dashboard.html', user_name=request.form['first_name'])
-
-
-@app.route('/login', methods=['POST'])
-def login():
-    data = {'email' }
 
 
 @app.route('/clearsession')
@@ -68,19 +60,18 @@ def register_user():
     return redirect("/dashboard")
 
 @app.route('/login', methods=['POST'])
-def login_post():
+def login():
     # ver si el nombre de usuario proporcionado existe en la base de datos
-    data = { "email" : request.form["email"] }
+    data = { "email" : request.form["email_login"] }
     user_in_db = User.get_by_email(data)
     # usuario no está registrado en la base de datos
     if not user_in_db:
-        flash("Invalid Email/Password")
+        flash("1 Invalid Email/Password")
         return redirect("/")
-    if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
+    if not bcrypt.check_password_hash(user_in_db.password, request.form['password_login']):
         # si obtenemos False después de verificar la contraseña
-        flash("Invalid Email/Password")
+        flash("2 Invalid Email/Password")
         return redirect('/')
     # si las contraseñas coinciden, configuramos el user_id en sesión
-    session['user_id'] = user_in_db.id
     # ¡¡¡Nunca renderices en una post!!!
-    return redirect("/dashboard")
+    return render_template('dashboard.html', user_name=user_in_db.first_name)
