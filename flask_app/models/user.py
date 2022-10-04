@@ -19,15 +19,6 @@ class User:
         self.updated_at = data['updated_at']
 
     @staticmethod
-    def validate_user( user ):
-        is_valid = True
-        # prueba si un campo coincide con el patrón
-        if not EMAIL_REGEX.match(user['email']): 
-            flash("Invalid email address!")
-            is_valid = False
-        return is_valid
-
-    @staticmethod
     def validate_user(user):
         is_valid = True # asumimos que esto es true
         if len(user['first_name']) < 3:
@@ -49,8 +40,10 @@ class User:
 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO users (username, password) VALUES (%(username)s, %(password)s);"
-        return connect_to_mysql(DB_SCHEMA).mysql.query_db(query, data)
+        #query = "INSERT INTO users (username, password) VALUES (%(username)s, %(password)s);"
+        query = """INSERT INTO users (first_name, last_name, email, password)
+        VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"""
+        return connect_to_mysql(DB_SCHEMA).query_db(query, data)
 
     @classmethod
     def get_by_email(cls,data):

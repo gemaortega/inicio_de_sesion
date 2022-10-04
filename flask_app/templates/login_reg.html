@@ -51,7 +51,7 @@
           <div class="card-body">
             <div class="card-body" style="width: 40rem; background-color: lightgrey">
               <h3 class="text-success">Register</h3><br>
-              <form action="/process" method="POST">
+              <form action="/create_user" method="POST">
                 <div class="mb-3">
                   <div class="form-group">
                     <label for="first_name" class="form_label">First Name</label>
@@ -67,11 +67,11 @@
                   </div>
                   <div class="form-group">
                     <label for="password" class="form_label">Password</label>
-                    <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="confirm_password" class="form_label">Confirm Password</label>
-                    <input type="text" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
                   </div> 
                 </div>
                 <button type="submit" class="btn btn-primary">Register</button>

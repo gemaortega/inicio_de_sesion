@@ -2,6 +2,7 @@ from flask_app.models.user import User
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_bcrypt import Bcrypt
+
 bcrypt = Bcrypt(app)
 
 @app.route('/')
@@ -19,19 +20,24 @@ def register():
 # RUTAS DE CREACION (CREATE)
 @app.route('/create_user', methods=['POST'])
 def create_user():
+    """
     if not User.validate_user(request.form):
         return redirect('/')
-    data={
+    """
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    print(f"pw_hash: {pw_hash}")
+    data = {
         'first_name': request.form['first_name'],
         'last_name': request.form['last_name'],
         'email': request.form['email'],
-        'password': request.form['password']
+        'password': pw_hash
     }
     print(data, "EFECTIVAMENTE ATRAPAMOS LA INFO DEL FORMULARIO")
-    id_user = User.register(data) # Llamar al metodo registro de la clase usuario para guardar info en la bd
+    id_user = User.save(data)
     print(id_user, "QUE RETORNO EL HABER REGISTRADO UN USUARIO NUEVO?")
-    session['id_usuario'] = id_user #Estoy almacenando el id del usuario en la session
-    return redirect('/dashboard.html')
+    #session['id_usuario'] = id_user 
+    return render_template('dashboard.html', user_name=request.form['first_name'])
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -43,6 +49,7 @@ def limpiar_session():
     session.clear()
     return redirect('/')
 
+# TODO Yo creo que este método no se usa
 @app.route('/register/user', methods=['POST'])
 def register_user():
     # validar el formulario aquí...
