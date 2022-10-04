@@ -29,8 +29,8 @@ def create_user():
     }
     print(data, "EFECTIVAMENTE ATRAPAMOS LA INFO DEL FORMULARIO")
     id_user = User.register(data) # Llamar al metodo registro de la clase usuario para guardar info en la bd
-    print(id_usuario, "QUE RETORNO EL HABER REGISTRADO UN USUARIO NUEVO?")
-    session['id_usuario'] = id_usuario #Estoy almacenando el id del usuario en la session
+    print(id_user, "QUE RETORNO EL HABER REGISTRADO UN USUARIO NUEVO?")
+    session['id_usuario'] = id_user #Estoy almacenando el id del usuario en la session
     return redirect('/dashboard.html')
 
 @app.route('/login', methods=['POST'])
@@ -44,7 +44,7 @@ def limpiar_session():
     return redirect('/')
 
 @app.route('/register/user', methods=['POST'])
-def register():
+def register_user():
     # validar el formulario aquí...
     # crear el hash
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
@@ -61,7 +61,7 @@ def register():
     return redirect("/dashboard")
 
 @app.route('/login', methods=['POST'])
-def login():
+def login_post():
     # ver si el nombre de usuario proporcionado existe en la base de datos
     data = { "email" : request.form["email"] }
     user_in_db = User.get_by_email(data)

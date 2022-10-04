@@ -1,6 +1,4 @@
-from flask_app.config.mysqlconnection import connectToMySQL
-from flask import flash
-
+import pymysql.cursors
 from flask_app.config.constants import DB_HOST, DB_USER, DB_PASSWORD
 
 
